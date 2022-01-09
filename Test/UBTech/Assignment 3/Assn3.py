@@ -2,10 +2,6 @@
 @author: Nathan Igo
 @date: 1/6/2022
 '''
-'''PassWord = ''
-FirstName = ''
-LastName = ''
-UserName = '''
 def main():
     print("Welcome to account creation wizard. Please follow the instructions below to get your account created.")
     print("We will be asking for your first and last name, your user name, and a 3 character password.")
@@ -23,22 +19,26 @@ def setUserName():
     return userName
 #/////////////////////////////////////////////////////////////
 def passCreate():
-    check == False;
+    check = False
+    error = False
     while check == False:
-        password = input("Plase enter your password (three numerical characters ONLY!):\t")
+        error = False
+        password = str(input("Plase enter your password (three numerical characters ONLY!):\t"))
         for i in password:
-            if password[i] == type(str):
+            if ord(i) < 48 or ord(i) > 57 and error == False:
                 print("Please enter numerical values only.")
-                break
-        if len(password) > 3:
+                error = True
+        if len(password) > 3 and error == False:
             print("A password can only be up to 3 characters long. Please try again.")
-            break
-        else:
+            error = True
+        elif error == False:
             print("Password created successfully:\t", password)
+            check = True
 
 def getUserSummary():
-    setName() = fist, last
-    setUserName() = usern
+    first, last = setName()
+    usern = setUserName()
+    passCreate()
     print(first, last, usern)
 
 main()
