@@ -3,7 +3,6 @@
 @date:   2, 1, 2022
 '''
 from time import sleep
-global firstTime
 firstTime = True
 def main():
     done = False
