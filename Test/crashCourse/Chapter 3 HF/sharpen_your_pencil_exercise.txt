@@ -1,0 +1,15 @@
+What implications are present for both versions of code that use logic to determine whether or not the code can run?
+1. The if statement
+The first code uses the os module (operating system), which is
+used for trying to determine whether or not the file is present
+within the working directory. If it isn't the if statement
+will pass on to the else statement.
+==============================================================
+2. The try except method
+The try except method is much more basic, which means that its
+harder to fail. If the code fails to retreive the file in the
+try method, the except will return an error that gives a
+proper reason for failure.
+
+Conclusion: 2 is better, because complexity is rarely a good
+thing.
