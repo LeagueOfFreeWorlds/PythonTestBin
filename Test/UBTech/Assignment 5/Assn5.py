@@ -13,13 +13,16 @@ def main():
         print("MENU")
         print("1)\tEnter Another Name")
         print("2)\tSee List of Names")
-        print("3)\tQuit")
+        print("3)\tSearch For a Name")
+        print("4)\tQuit")
         mode = int(input("Enter a selection:\t"))
         if mode == 1:
             nameWriter()
         elif mode == 2:
             nameReader()
         elif mode == 3:
+            nameLookup()
+        elif mode == 4:
             done = True
             break
         else:
@@ -30,6 +33,7 @@ def main():
 def nameWriter():
     global firstTime
     if not firstTime:
+        print("1. Single add | 2. Bulk add.")
         bulkName = int(input("Select whether you're doing one name, or bulk naming (adding multiple people):\t"))
         if bulkName == 1:
             firstName = str(input("Enter your first name:\t"))
@@ -40,7 +44,7 @@ def nameWriter():
             nameFile.close()
         elif bulkName == 2:
             count = 0
-            bulkAmount = int(input("What is the number of people that you're entering?\t"))
+            bulkAmount = int(input("What is the number of people that you're entering? (ENTER A VALUE):\t"))
             for i in range(1, bulkAmount + 1):
                 count += 1
                 firstName = str(input("Enter person " + str(count) + "'s first name:\t"))
@@ -68,13 +72,24 @@ def nameReader():
     nameIndex = nameFile.read()
     print(nameIndex)
     nameFile.close()
+def nameLookup():
+    nameFind = str(input("Enter a name to search:\t"))
+    thinking()
+    with open('nameList.txt') as myFile:
+        for num, line in enumerate(myFile, 1):
+            if nameFind in line:
+                print("Name has been located. ", nameFind)
+                print('found at line:', num)
+
+
+
 
 
 ## Little animation that I developed:
 def thinking():
     for i in range(5):
         print(".", end="")
-        sleep(0.1)
+        sleep(0.3)
     print()
 
 main()
